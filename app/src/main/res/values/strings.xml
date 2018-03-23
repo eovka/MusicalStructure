@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Musical Structure</string>
+    <string name="play_icon"> an icon to play music</string>
+    <string name="all_songs">All songs</string>
+    <string name="artists">Artists</string>
+    <string name="albums">Albums</string>
+</resources>
