@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="@dimen/standard_padding"
+    tools:background="@drawable/music_background">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/album_cover"
+        tools:src="@drawable/tool_10000days" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/small_padding"
+        android:paddingBottom="@dimen/small_padding">
+
+        <TextView
+            style="@style/songStyle"
+            tools:text="Song title" />
+
+        <TextView
+            style="@style/songStyle"
+            tools:text="Album title" />
+
+        <TextView
+            style="@style/songStyle"
+            tools:text="Artist / band" />
+
+    </LinearLayout>
+
+</LinearLayout>
