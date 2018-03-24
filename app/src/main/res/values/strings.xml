@@ -10,4 +10,5 @@
     <string name="an_artist"> an artist</string>
     <string name="an_album"> an album</string>
     <string name="now_playing">Now playing&#8230;</string>
+    <string name="music_stopped">Music stopped</string>
 </resources>
