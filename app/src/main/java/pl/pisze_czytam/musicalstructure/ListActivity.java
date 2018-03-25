@@ -26,7 +26,10 @@ public class ListActivity extends AppCompatActivity {
             ArrayList<Song> artists = new ArrayList<>();
             artists.add(new Song(R.drawable.tool_band, null, null, "Tool"));
             artists.add(new Song(R.drawable.kult_band, null, null, "Kult"));
+            artists.add(new Song(R.drawable.rammstein_band, null, null, "Rammstein"));
+            artists.add(new Song(R.drawable.leningrad_band, null, null, "Leningrad"));
 
+            // sort all artists alphabetically
             Collections.sort(artists, new Comparator<Song>(){
                 public int compare(Song s1, Song s2) {
                     return s1.getArtistName().compareTo(s2.getArtistName());
@@ -43,17 +46,17 @@ public class ListActivity extends AppCompatActivity {
             bind.list.setAdapter(albumsAdapter);
         } else {
             ArrayList<Song> allSongs = new ArrayList<>();
-            allSongs.add(new Song(R.drawable.tool_10000days, "Vicarious", "10,000 Days", "Tool"));
-            allSongs.add(new Song(R.drawable.tool_10000days, "Jambi", "10,000 Days", "Tool"));
-            allSongs.add(new Song(R.drawable.tool_10000days, "Wings for Marie (Pt 1)", "10,000 Days", "Tool"));
-            allSongs.add(new Song(R.drawable.tool_10000days, "10,000 Days (Wings Pt 2)", "10,000 Days", "Tool"));
-            allSongs.add(new Song(R.drawable.tool_10000days, "The Pot", "10,000 Days", "Tool"));
-            allSongs.add(new Song(R.drawable.tool_10000days, "Lipan Conjuring", "10,000 Days", "Tool"));
-            allSongs.add(new Song(R.drawable.tool_10000days, "Lost Keys (Blame Hofmann)", "10,000 Days", "Tool"));
-            allSongs.add(new Song(R.drawable.tool_10000days, "Rosetta Stoned", "10,000 Days", "Tool"));
-            allSongs.add(new Song(R.drawable.tool_10000days, "Intension", "10,000 Days", "Tool"));
-            allSongs.add(new Song(R.drawable.tool_10000days, "Right in Two", "10,000 Days", "Tool"));
-            allSongs.add(new Song(R.drawable.tool_10000days, "Viginti Tres", "10,000 Days", "Tool"));
+            allSongs.add(new Song(0, "Vicarious", null, "Tool"));
+            allSongs.add(new Song(0, "Jambi", null, "Tool"));
+            allSongs.add(new Song(0, "Wings for Marie (Pt 1)", null, "Tool"));
+            allSongs.add(new Song(0, "10,000 Days (Wings Pt 2)", null, "Tool"));
+            allSongs.add(new Song(0, "The Pot", null, "Tool"));
+            allSongs.add(new Song(0, "Lipan Conjuring", null, "Tool"));
+            allSongs.add(new Song(0, "Lost Keys (Blame Hofmann)", null, "Tool"));
+            allSongs.add(new Song(0, "Rosetta Stoned", null, "Tool"));
+            allSongs.add(new Song(0, "Intension", null, "Tool"));
+            allSongs.add(new Song(0, "Right in Two", null, "Tool"));
+            allSongs.add(new Song(0, "Viginti Tres", null, "Tool"));
 
             SongAdapter allSongsAdapter = new SongAdapter(this, allSongs);
             bind.list.setAdapter(allSongsAdapter);
