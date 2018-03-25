@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 bind.songsButton.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                bind.songsButton.setTextColor(getResources().getColor(R.color.textColor));
                 bind.songsButton.performClick();
                 return false;
             }
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 bind.artistsButton.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                bind.artistsButton.setTextColor(getResources().getColor(R.color.textColor));
                 bind.artistsButton.performClick();
                 return false;
             }
@@ -81,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 bind.albumsButton.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                bind.albumsButton.setTextColor(getResources().getColor(R.color.textColor));
                 bind.albumsButton.performClick();
                 return false;
             }
