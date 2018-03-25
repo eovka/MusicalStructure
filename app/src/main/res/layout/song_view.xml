@@ -8,6 +8,7 @@
     tools:background="@drawable/music_background">
 
     <ImageView
+        android:id="@+id/album_cover_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/album_cover"
@@ -17,21 +18,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="@dimen/small_padding"
-        android:paddingBottom="@dimen/small_padding">
+        android:paddingBottom="@dimen/small_padding"
+        android:paddingTop="@dimen/small_padding">
 
         <TextView
+            android:id="@+id/song_title_view"
             style="@style/songStyle"
             tools:text="Song title" />
 
         <TextView
+            android:id="@+id/album_title_view"
             style="@style/songStyle"
             tools:text="Album title" />
 
         <TextView
+            android:id="@+id/artist_name_view"
             style="@style/songStyle"
             tools:text="Artist / band" />
-
     </LinearLayout>
-
 </LinearLayout>

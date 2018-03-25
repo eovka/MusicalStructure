@@ -33,5 +33,6 @@ public class PlayerActivity extends AppCompatActivity {
                 }
             }
         });
+        bind.include.list.setBackground(null);
     }
 }
