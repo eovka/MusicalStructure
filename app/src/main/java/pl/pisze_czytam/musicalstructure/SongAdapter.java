@@ -30,6 +30,13 @@ public class SongAdapter extends ArrayAdapter<Song> {
         TextView artistName = listSongView.findViewById(R.id.artist_name_view);
         artistName.setText(currentSong.getArtistName());
 
+        if (songTitle.getText().equals("")) {
+            songTitle.setTextSize(0);
+        }
+        if (albumTitle.getText().equals("")) {
+            albumTitle.setTextSize(0);
+        }
+
         return listSongView;
     }
 }
