@@ -9,6 +9,7 @@
     <string name="a_song"> a song</string>
     <string name="an_artist"> an artist</string>
     <string name="an_album"> an album</string>
-    <string name="now_playing">Now playing&#8230;</string>
-    <string name="music_stopped">Music stopped</string>
+    <string name="music_playing">Playing: <xliff:g example="Tool" id="clickedItem">%s</xliff:g></string>
+    <string name="music_paused">Paused: <xliff:g example="Tool band" id="clickedItem">%s</xliff:g></string>
+    <string name="all_music">all your music</string>
 </resources>

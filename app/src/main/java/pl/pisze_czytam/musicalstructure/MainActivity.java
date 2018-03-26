@@ -20,7 +20,9 @@ public class MainActivity extends AppCompatActivity {
         bind.playImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, PlayerActivity.class));
+                Intent playerIntent = new Intent(MainActivity.this, PlayerActivity.class);
+                playerIntent.putExtra("clickedItem", getString(R.string.all_music));
+                startActivity(playerIntent);
             }
         });
         bind.playImage.setOnTouchListener(new View.OnTouchListener() {
