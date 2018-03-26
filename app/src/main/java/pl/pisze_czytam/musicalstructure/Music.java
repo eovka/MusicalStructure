@@ -1,23 +1,23 @@
 package pl.pisze_czytam.musicalstructure;
 
-public class Song {
+public class Music {
     private int mAlbumCover;
     private int mArtistImage;
     private String mSongTitle;
     private String mAlbumTitle;
     private String mArtistName;
 
-    public Song(int albumCover, String songTitle, String albumTitle, String artistName) {
+    public Music(int albumCover, String songTitle, String albumTitle, String artistName) {
         mAlbumCover = albumCover;
         mSongTitle = songTitle;
         mAlbumTitle = albumTitle;
         mArtistName = artistName;
     }
-    public Song(int artistImage, String artistName) {
+    public Music(int artistImage, String artistName) {
         mArtistImage = artistImage;
         mArtistName = artistName;
     }
-    public Song(int albumCover, String albumTitle, String artistName) {
+    public Music(int albumCover, String albumTitle, String artistName) {
         mAlbumCover = albumCover;
         mAlbumTitle = albumTitle;
         mArtistName = artistName;

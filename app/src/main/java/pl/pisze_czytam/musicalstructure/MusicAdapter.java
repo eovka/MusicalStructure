@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class SongAdapter extends ArrayAdapter<Song> {
-    public SongAdapter(Activity context, ArrayList<Song> allSongs) {
-        super(context,0, allSongs);
+public class MusicAdapter extends ArrayAdapter<Music> {
+    public MusicAdapter(Activity context, ArrayList<Music> musicList) {
+        super(context,0, musicList);
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -20,15 +20,15 @@ public class SongAdapter extends ArrayAdapter<Song> {
         if (listSongView == null) {
             listSongView = LayoutInflater.from(getContext()).inflate(R.layout.song_view, parent, false);
         }
-        Song currentSong = getItem(position);
+        Music currentMusic = getItem(position);
         ImageView musicImage = listSongView.findViewById(R.id.album_cover_view);
-        musicImage.setImageResource(currentSong.getCoverId());
+        musicImage.setImageResource(currentMusic.getCoverId());
         TextView songTitle = listSongView.findViewById(R.id.song_title_view);
-        songTitle.setText(currentSong.getSongTitle());
+        songTitle.setText(currentMusic.getSongTitle());
         TextView albumTitle = listSongView.findViewById(R.id.album_title_view);
-        albumTitle.setText(currentSong.getAlbumTitle());
+        albumTitle.setText(currentMusic.getAlbumTitle());
         TextView artistName = listSongView.findViewById(R.id.artist_name_view);
-        artistName.setText(currentSong.getArtistName());
+        artistName.setText(currentMusic.getArtistName());
 
         if (songTitle.getText().equals("")) {
             songTitle.setTextSize(0);

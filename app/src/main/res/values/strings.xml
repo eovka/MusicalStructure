@@ -5,10 +5,9 @@
     <string name="artists">Artists</string>
     <string name="albums">Albums</string>
     <string name="album_cover">an album cover</string>
-    <string name="choose">Choose <xliff:g example="a song" id="sortType">%s</xliff:g></string>
-    <string name="a_song"> a song</string>
-    <string name="an_artist"> an artist</string>
-    <string name="an_album"> an album</string>
+    <string name="choose_song">Choose a song</string>
+    <string name="choose_artist">Choose an artist</string>
+    <string name="choose_album">Choose an album</string>
     <string name="music_playing">Playing: <xliff:g example="Tool" id="clickedItem">%s</xliff:g></string>
     <string name="music_paused">Paused: <xliff:g example="Tool band" id="clickedItem">%s</xliff:g></string>
     <string name="all_music">all your music</string>

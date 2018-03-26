@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
         bind.songsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent songsIntent = new Intent(MainActivity.this, ListActivity.class);
-                songsIntent.putExtra("sortType", getString(R.string.a_song));
+                Intent songsIntent = new Intent(MainActivity.this, SongsActivity.class);
                 startActivity(songsIntent);
             }
         });
@@ -56,9 +55,7 @@ public class MainActivity extends AppCompatActivity {
         bind.artistsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent artistsIntent = new Intent(MainActivity.this, ListActivity.class);
-                artistsIntent.putExtra("sortType", getString(R.string.an_artist));
-                startActivity(artistsIntent);
+                startActivity(new Intent (MainActivity.this, ArtistsActivity.class));
             }
         });
 
@@ -75,8 +72,7 @@ public class MainActivity extends AppCompatActivity {
         bind.albumsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent albumsIntent = new Intent(MainActivity.this, ListActivity.class);
-                albumsIntent.putExtra("sortType", getString(R.string.an_album));
+                Intent albumsIntent = new Intent(MainActivity.this, AlbumsActivity.class);
                 startActivity(albumsIntent);
             }
         });

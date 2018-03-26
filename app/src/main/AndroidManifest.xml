@@ -17,8 +17,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ListActivity"
-            android:label="@string/choose"
+            android:name=".SongsActivity"
+            android:label="@string/choose_song"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ArtistsActivity"
+            android:label="@string/choose_artist"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AlbumsActivity"
+            android:label="@string/choose_album"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".PlayerActivity"
