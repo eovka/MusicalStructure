@@ -67,6 +67,7 @@ public class SongsActivity extends AppCompatActivity {
                 Intent playerIntent = new Intent(SongsActivity.this, PlayerActivity.class);
                 String song = allSongs.get(position).getSongTitle();
                 playerIntent.putExtra("clickedItem", song);
+                playerIntent.putParcelableArrayListExtra("allSongs", allSongs);
                 startActivity(playerIntent);
             }
         });

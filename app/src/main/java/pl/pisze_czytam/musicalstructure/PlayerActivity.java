@@ -5,17 +5,22 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import java.util.ArrayList;
+
 import pl.pisze_czytam.musicalstructure.databinding.ActivityPlayerBinding;
 
 public class PlayerActivity extends AppCompatActivity {
     ActivityPlayerBinding bind;
     boolean isPlaying;
     String musicPlaying;
+    ArrayList<Music> allSongs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bind = DataBindingUtil.setContentView(this, R.layout.activity_player);
+
+        allSongs = getIntent().getParcelableArrayListExtra("allSongs");
 
         musicPlaying = getIntent().getExtras().getString("clickedItem");
         if (musicPlaying == null) {
@@ -39,5 +44,6 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
         bind.include.list.setBackground(null);
+        bind.include.list.setAdapter(new MusicAdapter(this, allSongs));
     }
 }
