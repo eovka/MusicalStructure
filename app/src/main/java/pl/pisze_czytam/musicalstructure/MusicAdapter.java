@@ -33,10 +33,10 @@ public class MusicAdapter extends ArrayAdapter<Music> {
         artistName.setText(currentMusic.getArtistName());
 
         if (songTitle.getText().equals("")) {
-            songTitle.setTextSize(0);
+            songTitle.setVisibility(View.GONE);
         }
         if (albumTitle.getText().equals("")) {
-            albumTitle.setTextSize(0);
+            albumTitle.setVisibility(View.GONE);
         }
 
         return listSongView;
