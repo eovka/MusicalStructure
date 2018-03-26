@@ -5,6 +5,7 @@
     <string name="artists">Artists</string>
     <string name="albums">Albums</string>
     <string name="album_cover">an album cover</string>
+    <string name="artist_photo">an artist photo</string>
     <string name="choose_song">Choose a song</string>
     <string name="choose_artist">Choose an artist</string>
     <string name="choose_album">Choose an album</string>

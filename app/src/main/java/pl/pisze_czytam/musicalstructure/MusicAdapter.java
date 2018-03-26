@@ -23,6 +23,8 @@ public class MusicAdapter extends ArrayAdapter<Music> {
         Music currentMusic = getItem(position);
         ImageView musicImage = listSongView.findViewById(R.id.album_cover_view);
         musicImage.setImageResource(currentMusic.getCoverId());
+        ImageView artistImage = listSongView.findViewById(R.id.artist_photo);
+        artistImage.setImageResource(currentMusic.getArtistId());
         TextView songTitle = listSongView.findViewById(R.id.song_title_view);
         songTitle.setText(currentMusic.getSongTitle());
         TextView albumTitle = listSongView.findViewById(R.id.album_title_view);
