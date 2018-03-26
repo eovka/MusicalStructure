@@ -22,7 +22,7 @@ public class SongAdapter extends ArrayAdapter<Song> {
         }
         Song currentSong = getItem(position);
         ImageView musicImage = listSongView.findViewById(R.id.album_cover_view);
-        musicImage.setImageResource(currentSong.getImageId());
+        musicImage.setImageResource(currentSong.getCoverId());
         TextView songTitle = listSongView.findViewById(R.id.song_title_view);
         songTitle.setText(currentSong.getSongTitle());
         TextView albumTitle = listSongView.findViewById(R.id.album_title_view);
