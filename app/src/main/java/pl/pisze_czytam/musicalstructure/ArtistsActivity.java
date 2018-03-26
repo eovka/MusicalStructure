@@ -16,20 +16,20 @@ import pl.pisze_czytam.musicalstructure.databinding.MusicListBinding;
 
 public class ArtistsActivity extends AppCompatActivity {
     MusicListBinding bind;
-    ArrayList<Music> artists = new ArrayList<>();
+    ArrayList<MusicItem> artists = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bind = DataBindingUtil.setContentView(this, R.layout.music_list);
 
-        artists.add(new Music(R.drawable.tool_band, "Tool"));
-        artists.add(new Music(R.drawable.leningrad_band, "Leningrad"));
-        artists.add(new Music(R.drawable.kult_band, "Kult"));
+        artists.add(new MusicItem(R.drawable.tool_band, "Tool"));
+        artists.add(new MusicItem(R.drawable.leningrad_band, "Leningrad"));
+        artists.add(new MusicItem(R.drawable.kult_band, "Kult"));
 
         // sort all artists alphabetically
-        Collections.sort(artists, new Comparator<Music>(){
-            public int compare(Music m1, Music m2) {
+        Collections.sort(artists, new Comparator<MusicItem>(){
+            public int compare(MusicItem m1, MusicItem m2) {
                 return m1.getArtistName().compareTo(m2.getArtistName());
             }
         });

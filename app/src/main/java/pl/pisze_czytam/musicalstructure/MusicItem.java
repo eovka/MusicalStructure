@@ -3,30 +3,30 @@ package pl.pisze_czytam.musicalstructure;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Music implements Parcelable {
+public class MusicItem implements Parcelable {
     private int mAlbumCover;
     private int mArtistImage;
     private String mSongTitle;
     private String mAlbumTitle;
     private String mArtistName;
 
-    public Music(int albumCover, String songTitle, String albumTitle, String artistName) {
+    public MusicItem(int albumCover, String songTitle, String albumTitle, String artistName) {
         mAlbumCover = albumCover;
         mSongTitle = songTitle;
         mAlbumTitle = albumTitle;
         mArtistName = artistName;
     }
-    public Music(int artistImage, String artistName) {
+    public MusicItem(int artistImage, String artistName) {
         mArtistImage = artistImage;
         mArtistName = artistName;
     }
-    public Music(int albumCover, String albumTitle, String artistName) {
+    public MusicItem(int albumCover, String albumTitle, String artistName) {
         mAlbumCover = albumCover;
         mAlbumTitle = albumTitle;
         mArtistName = artistName;
     }
 
-    protected Music(Parcel in) {
+    protected MusicItem(Parcel in) {
         mAlbumCover = in.readInt();
         mArtistImage = in.readInt();
         mSongTitle = in.readString();
@@ -34,15 +34,15 @@ public class Music implements Parcelable {
         mArtistName = in.readString();
     }
 
-    public static final Creator<Music> CREATOR = new Creator<Music>() {
+    public static final Creator<MusicItem> CREATOR = new Creator<MusicItem>() {
         @Override
-        public Music createFromParcel(Parcel in) {
-            return new Music(in);
+        public MusicItem createFromParcel(Parcel in) {
+            return new MusicItem(in);
         }
 
         @Override
-        public Music[] newArray(int size) {
-            return new Music[size];
+        public MusicItem[] newArray(int size) {
+            return new MusicItem[size];
         }
     };
 

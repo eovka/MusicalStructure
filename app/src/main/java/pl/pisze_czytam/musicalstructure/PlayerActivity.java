@@ -13,7 +13,7 @@ public class PlayerActivity extends AppCompatActivity {
     ActivityPlayerBinding bind;
     boolean isPlaying;
     String musicPlaying;
-    ArrayList<Music> allSongs;
+    ArrayList<MusicItem> allSongs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
