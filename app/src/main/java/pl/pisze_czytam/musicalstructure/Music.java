@@ -1,6 +1,9 @@
 package pl.pisze_czytam.musicalstructure;
 
-public class Music {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Music implements Parcelable {
     private int mAlbumCover;
     private int mArtistImage;
     private String mSongTitle;
@@ -23,6 +26,26 @@ public class Music {
         mArtistName = artistName;
     }
 
+    protected Music(Parcel in) {
+        mAlbumCover = in.readInt();
+        mArtistImage = in.readInt();
+        mSongTitle = in.readString();
+        mAlbumTitle = in.readString();
+        mArtistName = in.readString();
+    }
+
+    public static final Creator<Music> CREATOR = new Creator<Music>() {
+        @Override
+        public Music createFromParcel(Parcel in) {
+            return new Music(in);
+        }
+
+        @Override
+        public Music[] newArray(int size) {
+            return new Music[size];
+        }
+    };
+
     public int getCoverId() {
         return mAlbumCover;
     }
@@ -37,5 +60,19 @@ public class Music {
     }
     public String getArtistName() {
         return mArtistName;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(mAlbumCover);
+        dest.writeInt(mArtistImage);
+        dest.writeString(mSongTitle);
+        dest.writeString(mAlbumTitle);
+        dest.writeString(mArtistName);
     }
 }
