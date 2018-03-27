@@ -29,6 +29,20 @@ public class ArtistsActivity extends AppCompatActivity {
                 return m1.getArtistName().compareTo(m2.getArtistName());
             }
         });
+
+        // clear all repeated artists and all needless attributes in this activity
+        for (int i = 0; i < allSongs.size(); i++) {
+            while (allSongs.get(i).getArtistName().equals(allSongs.get(i + 1).getArtistName())) {
+                allSongs.remove(i + 1);
+                if (i == allSongs.size() - 1) {
+                    break;
+                }
+            }
+            allSongs.get(i).setCoverId(0);
+            allSongs.get(i).setSongTitle("");
+            allSongs.get(i).setAlbumTitle("");
+        }
+
         bind.list.setAdapter(new MusicAdapter(this, allSongs));
 
         bind.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
