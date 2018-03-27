@@ -10,18 +10,10 @@ public class MusicItem implements Parcelable {
     private String mAlbumTitle;
     private String mArtistName;
 
-    public MusicItem(int albumCover, String songTitle, String albumTitle, String artistName) {
+    public MusicItem(int albumCover, int artistImage, String songTitle, String albumTitle, String artistName) {
         mAlbumCover = albumCover;
-        mSongTitle = songTitle;
-        mAlbumTitle = albumTitle;
-        mArtistName = artistName;
-    }
-    public MusicItem(int artistImage, String artistName) {
         mArtistImage = artistImage;
-        mArtistName = artistName;
-    }
-    public MusicItem(int albumCover, String albumTitle, String artistName) {
-        mAlbumCover = albumCover;
+        mSongTitle = songTitle;
         mAlbumTitle = albumTitle;
         mArtistName = artistName;
     }
