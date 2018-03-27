@@ -13,33 +13,31 @@ import java.util.Comparator;
 
 import pl.pisze_czytam.musicalstructure.databinding.MusicListBinding;
 
-
 public class ArtistsActivity extends AppCompatActivity {
     MusicListBinding bind;
-    ArrayList<MusicItem> artists = new ArrayList<>();
+    ArrayList<MusicItem> allSongs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bind = DataBindingUtil.setContentView(this, R.layout.music_list);
-
-        artists.add(new MusicItem(R.drawable.tool_band, "Tool"));
-        artists.add(new MusicItem(R.drawable.leningrad_band, "Leningrad"));
-        artists.add(new MusicItem(R.drawable.kult_band, "Kult"));
+        allSongs = getIntent().getParcelableArrayListExtra("allSongs");
 
         // sort all artists alphabetically
-        Collections.sort(artists, new Comparator<MusicItem>(){
+        Collections.sort(allSongs, new Comparator<MusicItem>() {
             public int compare(MusicItem m1, MusicItem m2) {
                 return m1.getArtistName().compareTo(m2.getArtistName());
             }
         });
-        bind.list.setAdapter(new MusicAdapter(this, artists));
+        bind.list.setAdapter(new MusicAdapter(this, allSongs));
 
         bind.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent playerIntent = new Intent(ArtistsActivity.this, PlayerActivity.class);
-                playerIntent.putExtra("clickedItem", artists.get(position).getArtistName());
+                String artistName = allSongs.get(position).getArtistName();
+                playerIntent.putExtra("clickedItem", artistName);
+                playerIntent.putParcelableArrayListExtra("allSongs", allSongs);
                 startActivity(playerIntent);
             }
         });
