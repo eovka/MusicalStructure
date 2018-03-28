@@ -23,12 +23,27 @@ public class PlayerActivity extends AppCompatActivity {
         allSongs = getIntent().getParcelableArrayListExtra("allSongs");
 
         musicPlaying = getIntent().getExtras().getString("clickedItem");
-        if (musicPlaying == null) {
-            musicPlaying = "unknown";
-        }
         getSupportActionBar().setTitle(getString(R.string.music_playing, musicPlaying));
-
         isPlaying = true;
+
+        // check from which activity a user came, which artist or album he chose
+        // and set a list with a proper artist or album
+        String checkFlag = getIntent().getStringExtra("flag");
+        if (checkFlag.equals("artists")) {
+            String artist = getIntent().getExtras().getString("clickedItem");
+            for (int i = 0; i < allSongs.size(); i++) {
+                while (!artist.equals(allSongs.get(i).getArtistName())) {
+                    allSongs.remove(i);
+                    if (i == allSongs.size() - 1) {
+                            break;
+                    }
+                }
+                allSongs.get(i).setCoverId(0);
+                allSongs.get(i).setArtistId(0);
+                allSongs.get(i).setAlbumTitle("");
+            }
+        }
+
         bind.pauseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

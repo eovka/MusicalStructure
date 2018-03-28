@@ -88,10 +88,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    // intent with 2 Parcelable - 1st to operate in the next activity, 2nd to pass to the Player
         bind.artistsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent artistsIntent = new Intent(MainActivity.this, ArtistsActivity.class);
+                artistsIntent.putParcelableArrayListExtra("songsToPick", allSongs);
                 artistsIntent.putParcelableArrayListExtra("allSongs", allSongs);
                 startActivity(artistsIntent);
             }
@@ -106,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
         bind.albumsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
