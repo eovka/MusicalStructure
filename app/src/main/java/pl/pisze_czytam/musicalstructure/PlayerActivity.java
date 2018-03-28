@@ -44,9 +44,21 @@ public class PlayerActivity extends AppCompatActivity {
                 allSongs.get(i).setArtistId(0);
                 allSongs.get(i).setAlbumTitle("");
             }
-//            if (!allSongs.get(0).getArtistName().equals(allSongs.get(1).getArtistName())) {
-//                allSongs.remove(0);
-//            }
+        } else if (checkFlag.equals("albums")) {
+            String album = getIntent().getExtras().getString("clickedItem");
+            for (int i = -1; i < allSongs.size() - 1; i++) {
+                while (!album.equals(allSongs.get(i + 1).getAlbumTitle())) {
+                    allSongs.remove(i + 1);
+                    if (i == allSongs.size() - 1) {
+                        break;
+                    }
+                }
+            }
+            for (int i = 0; i < allSongs.size(); i++) {
+                allSongs.get(i).setCoverId(0);
+                allSongs.get(i).setArtistId(0);
+                allSongs.get(i).setAlbumTitle("");
+            }
         }
 
         bind.pauseImage.setOnClickListener(new View.OnClickListener() {

@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         allSongs.add(new MusicItem(R.drawable.tool_10000days, R.drawable.tool_band,"Intension", "10,000 Days", "Tool"));
         allSongs.add(new MusicItem(R.drawable.tool_10000days, R.drawable.tool_band,"Right in Two", "10,000 Days", "Tool"));
         allSongs.add(new MusicItem(R.drawable.tool_10000days, R.drawable.tool_band,"Viginti Tres", "10,000 Days", "Tool"));
-        allSongs.add(new MusicItem(R.drawable.leningrad_dlya_milionov, R.drawable.leningrad_band, "Меня зовут Шнур", "Для миллионов", "Leningrad"));
+        allSongs.add(new MusicItem(R.drawable.leningrad_dlya_milionov, R.drawable.leningrad_band,"Меня зовут Шнур", "Для миллионов", "Leningrad"));
         allSongs.add(new MusicItem(R.drawable.leningrad_dlya_milionov, R.drawable.leningrad_band,"Май", "Для миллионов", "Leningrad"));
         allSongs.add(new MusicItem(R.drawable.leningrad_dlya_milionov, R.drawable.leningrad_band,"Хуйня", "Для миллионов", "Leningrad"));
         allSongs.add(new MusicItem(R.drawable.leningrad_dlya_milionov, R.drawable.leningrad_band,"Менеджер", "Для миллионов", "Leningrad"));
@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent albumsIntent = new Intent(MainActivity.this, AlbumsActivity.class);
+                albumsIntent.putParcelableArrayListExtra("songsToPick", allSongs);
                 albumsIntent.putParcelableArrayListExtra("allSongs", allSongs);
                 startActivity(albumsIntent);
             }

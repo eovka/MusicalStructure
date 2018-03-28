@@ -16,26 +16,41 @@ import pl.pisze_czytam.musicalstructure.databinding.MusicListBinding;
 public class AlbumsActivity extends AppCompatActivity {
     MusicListBinding bind;
     ArrayList<MusicItem> allSongs;
+    ArrayList<MusicItem> songsToPick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bind = DataBindingUtil.setContentView(this, R.layout.music_list);
         allSongs = getIntent().getParcelableArrayListExtra("allSongs");
+        songsToPick = getIntent().getParcelableArrayListExtra("songsToPick");
 
-        Collections.sort(allSongs, new Comparator<MusicItem>() {
+        Collections.sort(songsToPick, new Comparator<MusicItem>() {
             public int compare(MusicItem m1, MusicItem m2) {
                 return m1.getAlbumTitle().compareTo(m2.getAlbumTitle());
             }
         });
 
-        bind.list.setAdapter(new MusicAdapter(this, allSongs));
+        for (int i = 0; i < songsToPick.size(); i++) {
+            while (songsToPick.get(i).getAlbumTitle().equals(songsToPick.get(i + 1).getAlbumTitle())) {
+                songsToPick.remove(i + 1);
+                if (i == songsToPick.size() - 1) {
+                    break;
+                }
+            }
+            songsToPick.get(i).setArtistId(0);
+            songsToPick.get(i).setSongTitle("");
+        }
+
+        bind.list.setAdapter(new MusicAdapter(this, songsToPick));
 
         bind.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent playerIntent = new Intent(AlbumsActivity.this, PlayerActivity.class);
-                playerIntent.putExtra("clickedItem", allSongs.get(position).getAlbumTitle());
+                String albumTitle = songsToPick.get(position).getAlbumTitle();
+                playerIntent.putExtra("flag", "albums");
+                playerIntent.putExtra("clickedItem", albumTitle);
                 playerIntent.putParcelableArrayListExtra("allSongs", allSongs);
                 startActivity(playerIntent);
             }

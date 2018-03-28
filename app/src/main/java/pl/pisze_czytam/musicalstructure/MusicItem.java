@@ -54,16 +54,16 @@ public class MusicItem implements Parcelable {
         return mArtistName;
     }
 
-    public void setCoverId (int cover) {
+    public void setCoverId(int cover) {
         this.mAlbumCover = cover;
     }
-    public void setArtistId (int photo) {
+    public void setArtistId(int photo) {
         this.mArtistImage = photo;
     }
     public void setSongTitle(String songTitle) {
         this.mSongTitle = songTitle;
     }
-    public void setAlbumTitle (String albumTitle) {
+    public void setAlbumTitle(String albumTitle) {
         this.mAlbumTitle = albumTitle;
     }
     public void setArtistName(String name) {
