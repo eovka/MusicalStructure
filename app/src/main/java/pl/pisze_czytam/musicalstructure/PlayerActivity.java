@@ -31,20 +31,22 @@ public class PlayerActivity extends AppCompatActivity {
         String checkFlag = getIntent().getStringExtra("flag");
         if (checkFlag.equals("artists")) {
             String artist = getIntent().getExtras().getString("clickedItem");
-            for (int i = 0; i < allSongs.size(); i++) {
-                while (!artist.equals(allSongs.get(i).getArtistName())) {
-                    allSongs.remove(i);
+            for (int i = -1; i < allSongs.size() - 1; i++) {
+                while (!artist.equals(allSongs.get(i + 1).getArtistName())) {
+                    allSongs.remove(i + 1);
                     if (i == allSongs.size() - 1) {
-                            break;
+                        break;
                     }
                 }
+            }
+            for (int i = 0; i < allSongs.size(); i++) {
                 allSongs.get(i).setCoverId(0);
                 allSongs.get(i).setArtistId(0);
                 allSongs.get(i).setAlbumTitle("");
             }
-            if (!allSongs.get(allSongs.size() - 1).getArtistName().equals(allSongs.get(allSongs.size() - 2).getArtistName())) {
-                allSongs.remove(allSongs.size() - 1);
-            }
+//            if (!allSongs.get(0).getArtistName().equals(allSongs.get(1).getArtistName())) {
+//                allSongs.remove(0);
+//            }
         }
 
         bind.pauseImage.setOnClickListener(new View.OnClickListener() {

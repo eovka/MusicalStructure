@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         allSongs.add(new MusicItem(R.drawable.kult_ostateczny_krach, R.drawable.kult_band,"Gdy nie ma dzieci", "Ostateczny krach systemu korporacji", "Kult"));
         allSongs.add(new MusicItem(R.drawable.kult_ostateczny_krach, R.drawable.kult_band,"Dziewczyna bez zęba na przedzie", "Ostateczny krach systemu korporacji", "Kult"));
         allSongs.add(new MusicItem(R.drawable.kult_ostateczny_krach, R.drawable.kult_band,"Komu bije dzwon", "Ostateczny krach systemu korporacji", "Kult"));
+        allSongs.add(new MusicItem(R.drawable.rammstein_band, R.drawable.rammstein_band,"Du riechst so gut", "Herzeleid", "Rammstein"));
 
         bind.playImage.setOnClickListener(new View.OnClickListener() {
             @Override
