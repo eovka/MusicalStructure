@@ -26,7 +26,7 @@ public class PlayerActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(getString(R.string.music_playing, musicPlaying));
         isPlaying = true;
 
-        // check from which activity a user came, which artist or album he chose
+        // check from which activity a user came (flag), which artist or album he chose (clickedItem)
         // and set a list with a proper artist or album
         String checkFlag = getIntent().getStringExtra("flag");
         if (checkFlag.equals("artists")) {
@@ -41,6 +41,9 @@ public class PlayerActivity extends AppCompatActivity {
                 allSongs.get(i).setCoverId(0);
                 allSongs.get(i).setArtistId(0);
                 allSongs.get(i).setAlbumTitle("");
+            }
+            if (!allSongs.get(allSongs.size() - 1).getArtistName().equals(allSongs.get(allSongs.size() - 2).getArtistName())) {
+                allSongs.remove(allSongs.size() - 1);
             }
         }
 
