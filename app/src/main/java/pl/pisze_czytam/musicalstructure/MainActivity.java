@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent playerIntent = new Intent(MainActivity.this, PlayerActivity.class);
                 playerIntent.putExtra("clickedItem", getString(R.string.all_music));
+                playerIntent.putExtra("flag", "allSongs");
                 playerIntent.putParcelableArrayListExtra("allSongs", allSongs);
                 startActivity(playerIntent);
             }
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent songsIntent = new Intent(MainActivity.this, SongsActivity.class);
+                songsIntent.putParcelableArrayListExtra("songsToPick", allSongs);
                 songsIntent.putParcelableArrayListExtra("allSongs", allSongs);
                 startActivity(songsIntent);
             }

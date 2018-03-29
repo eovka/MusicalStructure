@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import pl.pisze_czytam.musicalstructure.databinding.ActivityPlayerBinding;
 
@@ -29,36 +31,77 @@ public class PlayerActivity extends AppCompatActivity {
         // check from which activity a user came (flag), which artist or album he chose (clickedItem)
         // and set a list with a proper artist or album
         String checkFlag = getIntent().getStringExtra("flag");
-        if (checkFlag.equals("artists")) {
-            String artist = getIntent().getExtras().getString("clickedItem");
-            for (int i = -1; i < allSongs.size() - 1; i++) {
-                while (!artist.equals(allSongs.get(i + 1).getArtistName())) {
-                    allSongs.remove(i + 1);
-                    if (i == allSongs.size() - 1) {
-                        break;
+        switch (checkFlag) {
+            case "oneSong":
+                String songTitle = getIntent().getExtras().getString("clickedItem");
+                for (int i = -1; i < allSongs.size() - 1; i++) {
+                    while (!songTitle.equals(allSongs.get(i + 1).getSongTitle())) {
+                        allSongs.remove(i + 1);
+                        if (i == allSongs.size() - 1) {
+                            break;
+                        }
                     }
                 }
-            }
-            for (int i = 0; i < allSongs.size(); i++) {
-                allSongs.get(i).setCoverId(0);
-                allSongs.get(i).setArtistId(0);
-                allSongs.get(i).setAlbumTitle("");
-            }
-        } else if (checkFlag.equals("albums")) {
-            String album = getIntent().getExtras().getString("clickedItem");
-            for (int i = -1; i < allSongs.size() - 1; i++) {
-                while (!album.equals(allSongs.get(i + 1).getAlbumTitle())) {
-                    allSongs.remove(i + 1);
-                    if (i == allSongs.size() - 1) {
-                        break;
+                for (int i = 0; i < allSongs.size(); i++) {
+                    double randomNumber = Math.random();
+                    randomNumber *= 2;
+                    int toPickPhoto = (int) randomNumber;
+                    if (toPickPhoto == 0) {
+                        allSongs.get(i).setCoverId(0);
+                    } else {
+                        allSongs.get(i).setArtistId(0);
                     }
                 }
-            }
-            for (int i = 0; i < allSongs.size(); i++) {
-                allSongs.get(i).setCoverId(0);
-                allSongs.get(i).setArtistId(0);
-                allSongs.get(i).setAlbumTitle("");
-            }
+                break;
+            case "artists":
+                String artist = getIntent().getExtras().getString("clickedItem");
+                for (int i = -1; i < allSongs.size() - 1; i++) {
+                    while (!artist.equals(allSongs.get(i + 1).getArtistName())) {
+                        allSongs.remove(i + 1);
+                        if (i == allSongs.size() - 1) {
+                            break;
+                        }
+                    }
+                }
+                for (int i = 0; i < allSongs.size(); i++) {
+                    allSongs.get(i).setCoverId(0);
+                    allSongs.get(i).setArtistId(0);
+                    allSongs.get(i).setAlbumTitle("");
+                }
+                break;
+            case "albums":
+                String album = getIntent().getExtras().getString("clickedItem");
+                for (int i = -1; i < allSongs.size() - 1; i++) {
+                    while (!album.equals(allSongs.get(i + 1).getAlbumTitle())) {
+                        allSongs.remove(i + 1);
+                        if (i == allSongs.size() - 1) {
+                            break;
+                        }
+                    }
+                }
+                for (int i = 0; i < allSongs.size(); i++) {
+                    allSongs.get(i).setCoverId(0);
+                    allSongs.get(i).setArtistId(0);
+                    allSongs.get(i).setAlbumTitle("");
+                }
+                break;
+            case "allSongs":
+                for (int i = 0; i < allSongs.size(); i++) {
+                    double randomNumber = Math.random();
+                    randomNumber *= 2;
+                    int toPickPhoto = (int) randomNumber;
+                    if (toPickPhoto == 0) {
+                        allSongs.get(i).setCoverId(0);
+                    } else {
+                        allSongs.get(i).setArtistId(0);
+                    }
+                }
+                Collections.sort(allSongs, new Comparator<MusicItem>() {
+                    public int compare(MusicItem m1, MusicItem m2) {
+                        return m1.getSongTitle().compareTo(m2.getSongTitle());
+                    }
+                });
+                break;
         }
 
         bind.pauseImage.setOnClickListener(new View.OnClickListener() {
