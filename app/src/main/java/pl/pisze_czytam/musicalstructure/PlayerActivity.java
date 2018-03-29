@@ -103,22 +103,46 @@ public class PlayerActivity extends AppCompatActivity {
                 });
                 break;
         }
+        bind.include.list.setBackground(null);
+        bind.include.list.setAdapter(new MusicAdapter(this, allSongs));
 
         bind.pauseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isPlaying) {
-                    bind.pauseImage.setImageDrawable(getResources().getDrawable(R.drawable.button_play));
+                    bind.pauseImage.setImageResource(R.drawable.button_play);
                     getSupportActionBar().setTitle(getString(R.string.music_paused, musicPlaying));
                     isPlaying = false;
                 } else {
-                    bind.pauseImage.setImageDrawable(getResources().getDrawable(R.drawable.button_pause_purple));
+                    bind.pauseImage.setImageResource(R.drawable.button_pause_purple);
                     getSupportActionBar().setTitle(getString(R.string.music_playing, musicPlaying));
                     isPlaying = true;
                 }
             }
         });
-        bind.include.list.setBackground(null);
-        bind.include.list.setAdapter(new MusicAdapter(this, allSongs));
+        bind.repeatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bind.repeatButton.setImageResource(R.drawable.repeat_purple);
+            }
+        });
+        bind.backwardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bind.backwardButton.setImageResource(R.drawable.backward_purple);
+            }
+        });
+        bind.forwardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bind.forwardButton.setImageResource(R.drawable.forward_purple);
+            }
+        });
+        bind.shuffleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bind.shuffleButton.setImageResource(R.drawable.shuffle_purple);
+            }
+        });
     }
 }

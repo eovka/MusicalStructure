@@ -4,7 +4,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/music_background"
+        android:background="@drawable/background_image"
         android:orientation="vertical">
 
         <LinearLayout
@@ -24,33 +24,41 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="@dimen/standard_padding"
-                android:gravity="center">
+                android:padding="@dimen/standard_padding">
 
                 <ImageView
+                    android:id="@+id/repeat_button"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_margin="@dimen/small_padding"
-                    android:src="@drawable/repeat_grey"/>
+                    android:contentDescription="@string/repeat_button"
+                    android:src="@drawable/repeat_grey" />
 
                 <ImageView
+                    android:id="@+id/backward_button"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_margin="@dimen/small_padding"
-                    android:src="@drawable/backward_grey"/>
+                    android:contentDescription="@string/backward_arrow"
+                    android:src="@drawable/backward_grey" />
 
                 <ImageView
+                    android:id="@+id/forward_button"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_margin="@dimen/small_padding"
-                    android:src="@drawable/forward_grey"/>
+                    android:contentDescription="@string/forward_arrow"
+                    android:src="@drawable/forward_grey" />
 
                 <ImageView
+                    android:id="@+id/shuffle_button"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_margin="@dimen/small_padding"
-                    android:src="@drawable/shuffle_grey"/>
+                    android:contentDescription="@string/shuffle_button"
+                    android:src="@drawable/shuffle_grey" />
             </LinearLayout>
         </LinearLayout>
 
