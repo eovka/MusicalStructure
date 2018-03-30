@@ -50,7 +50,7 @@ public class SongsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent playerIntent = new Intent(SongsActivity.this, PlayerActivity.class);
                 String songTitle = songsToPick.get(position).getSongTitle();
-                playerIntent.putExtra("flag", "oneSong");
+                playerIntent.putExtra("flag", "allSongs");
                 playerIntent.putExtra("clickedItem", songTitle);
                 playerIntent.putParcelableArrayListExtra("allSongs", allSongs);
                 startActivity(playerIntent);

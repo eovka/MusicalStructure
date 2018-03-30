@@ -28,14 +28,18 @@ public class PlayerActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(getString(R.string.music_playing, musicPlaying));
         isPlaying = true;
 
-        // check from which activity a user came (flag), which artist or album he chose (clickedItem)
-        // and set a list with a proper artist or album
+        // check from which activity a user came (flag), which artist, album or song he chose (clickedItem)
+        // and set a list with a random song, an artist's songs, songs from one album or with all songs
         String checkFlag = getIntent().getStringExtra("flag");
         switch (checkFlag) {
             case "oneSong":
-                String songTitle = getIntent().getExtras().getString("clickedItem");
+                double randomNumber = Math.random();
+                randomNumber *= allSongs.size();
+                int randomIndex = (int) randomNumber;
+
+                String randomSong = allSongs.get(randomIndex).getSongTitle();
                 for (int i = -1; i < allSongs.size() - 1; i++) {
-                    while (!songTitle.equals(allSongs.get(i + 1).getSongTitle())) {
+                    while (!randomSong.equals(allSongs.get(i + 1).getSongTitle())) {
                         allSongs.remove(i + 1);
                         if (i == allSongs.size() - 1) {
                             break;
@@ -43,9 +47,9 @@ public class PlayerActivity extends AppCompatActivity {
                     }
                 }
                 for (int i = 0; i < allSongs.size(); i++) {
-                    double randomNumber = Math.random();
-                    randomNumber *= 2;
-                    int toPickPhoto = (int) randomNumber;
+                    double randomTwo = Math.random();
+                    randomTwo *= 2;
+                    int toPickPhoto = (int) randomTwo;
                     if (toPickPhoto == 0) {
                         allSongs.get(i).setCoverId(0);
                     } else {
@@ -86,21 +90,24 @@ public class PlayerActivity extends AppCompatActivity {
                 }
                 break;
             case "allSongs":
-                for (int i = 0; i < allSongs.size(); i++) {
-                    double randomNumber = Math.random();
-                    randomNumber *= 2;
-                    int toPickPhoto = (int) randomNumber;
-                    if (toPickPhoto == 0) {
-                        allSongs.get(i).setCoverId(0);
-                    } else {
-                        allSongs.get(i).setArtistId(0);
-                    }
-                }
+                String songTitle = getIntent().getExtras().getString("clickedItem");
                 Collections.sort(allSongs, new Comparator<MusicItem>() {
                     public int compare(MusicItem m1, MusicItem m2) {
                         return m1.getSongTitle().compareTo(m2.getSongTitle());
                     }
                 });
+//                int songIndex = 0;
+//                for (int i = 0; i < allSongs.size(); i++) {
+//                    if (songTitle.equals(allSongs.get(i).getSongTitle())) {
+//                        songIndex = i;
+//                    }
+//                }
+
+                for (int i = 0; i < allSongs.size(); i++) {
+                    allSongs.get(i).setCoverId(0);
+                    allSongs.get(i).setArtistId(0);
+                    allSongs.get(i).setAlbumTitle("");
+                }
                 break;
         }
         bind.include.list.setBackground(null);
