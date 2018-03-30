@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent playerIntent = new Intent(MainActivity.this, PlayerActivity.class);
-                playerIntent.putExtra("clickedItem", getString(R.string.all_music));
+                playerIntent.putExtra("clickedItem", getString(R.string.random_song));
                 playerIntent.putExtra("flag", "oneSong");
                 playerIntent.putParcelableArrayListExtra("allSongs", allSongs);
                 startActivity(playerIntent);

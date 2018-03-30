@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,6 +22,7 @@ public class PlayerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bind = DataBindingUtil.setContentView(this, R.layout.activity_player);
+        int songIndex = 0;
 
         allSongs = getIntent().getParcelableArrayListExtra("allSongs");
 
@@ -90,28 +92,36 @@ public class PlayerActivity extends AppCompatActivity {
                 }
                 break;
             case "allSongs":
-                String songTitle = getIntent().getExtras().getString("clickedItem");
                 Collections.sort(allSongs, new Comparator<MusicItem>() {
                     public int compare(MusicItem m1, MusicItem m2) {
                         return m1.getSongTitle().compareTo(m2.getSongTitle());
                     }
                 });
-//                int songIndex = 0;
-//                for (int i = 0; i < allSongs.size(); i++) {
-//                    if (songTitle.equals(allSongs.get(i).getSongTitle())) {
-//                        songIndex = i;
-//                    }
-//                }
-
+                
+                String songTitle = getIntent().getExtras().getString("clickedItem");
+                for (int i = 0; i < allSongs.size(); i++) {
+                    if (songTitle.equals(allSongs.get(i).getSongTitle())) {
+                        songIndex = i;
+                    }
+                }
                 for (int i = 0; i < allSongs.size(); i++) {
                     allSongs.get(i).setCoverId(0);
                     allSongs.get(i).setArtistId(0);
                     allSongs.get(i).setAlbumTitle("");
                 }
+                bind.include.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        musicPlaying = allSongs.get(position).getSongTitle();
+                        getSupportActionBar().setTitle(getString(R.string.music_playing, musicPlaying));
+                    }
+                });
                 break;
         }
         bind.include.list.setBackground(null);
         bind.include.list.setAdapter(new MusicAdapter(this, allSongs));
+        bind.include.list.setSelection(songIndex);
+        bind.include.list.performItemClick(bind.include.list, songIndex, bind.include.list.getItemIdAtPosition(songIndex));
 
         bind.pauseImage.setOnClickListener(new View.OnClickListener() {
             @Override

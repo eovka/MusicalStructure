@@ -11,7 +11,7 @@
     <string name="choose_album">Choose an album</string>
     <string name="music_playing">Playing: <xliff:g example="Tool" id="clickedItem">%s</xliff:g></string>
     <string name="music_paused">Paused: <xliff:g example="Tool band" id="clickedItem">%s</xliff:g></string>
-    <string name="all_music">all your music</string>
+    <string name="random_song">random song</string>
     <string name="repeat_button">repeat_button</string>
     <string name="backward_arrow">backward arrow</string>
     <string name="forward_arrow">forward arrow</string>
