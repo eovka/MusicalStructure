@@ -16,13 +16,14 @@ public class PlayerActivity extends AppCompatActivity {
     ActivityPlayerBinding bind;
     boolean isPlaying;
     String musicPlaying;
+    int songIndex;
     ArrayList<MusicItem> allSongs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bind = DataBindingUtil.setContentView(this, R.layout.activity_player);
-        int songIndex = 0;
+        songIndex = 0;
 
         allSongs = getIntent().getParcelableArrayListExtra("allSongs");
 
@@ -97,7 +98,7 @@ public class PlayerActivity extends AppCompatActivity {
                         return m1.getSongTitle().compareTo(m2.getSongTitle());
                     }
                 });
-                
+
                 String songTitle = getIntent().getExtras().getString("clickedItem");
                 for (int i = 0; i < allSongs.size(); i++) {
                     if (songTitle.equals(allSongs.get(i).getSongTitle())) {
@@ -121,17 +122,16 @@ public class PlayerActivity extends AppCompatActivity {
         bind.include.list.setBackground(null);
         bind.include.list.setAdapter(new MusicAdapter(this, allSongs));
         bind.include.list.setSelection(songIndex);
-        bind.include.list.performItemClick(bind.include.list, songIndex, bind.include.list.getItemIdAtPosition(songIndex));
 
         bind.pauseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isPlaying) {
-                    bind.pauseImage.setImageResource(R.drawable.button_play);
+                    bind.pauseImage.setImageResource(R.drawable.button_pause_grey);
                     getSupportActionBar().setTitle(getString(R.string.music_paused, musicPlaying));
                     isPlaying = false;
                 } else {
-                    bind.pauseImage.setImageResource(R.drawable.button_pause_purple);
+                    bind.pauseImage.setImageResource(R.drawable.button_play_purple);
                     getSupportActionBar().setTitle(getString(R.string.music_playing, musicPlaying));
                     isPlaying = true;
                 }
@@ -159,6 +159,7 @@ public class PlayerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 bind.shuffleButton.setImageResource(R.drawable.shuffle_purple);
+
             }
         });
     }

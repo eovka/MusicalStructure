@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         bind.songsButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                bind.songsButton.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                bind.songsButton.setBackground(getResources().getDrawable(R.drawable.button_background_a_purple));
                 bind.songsButton.setTextColor(getResources().getColor(R.color.textColor));
                 bind.songsButton.performClick();
                 return false;
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         bind.artistsButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                bind.artistsButton.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                bind.artistsButton.setBackground(getResources().getDrawable(R.drawable.button_background_b_purple));
                 bind.artistsButton.setTextColor(getResources().getColor(R.color.textColor));
                 bind.artistsButton.performClick();
                 return false;
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         bind.albumsButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                bind.albumsButton.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                bind.albumsButton.setBackground(getResources().getDrawable(R.drawable.button_background_c_purple));
                 bind.albumsButton.setTextColor(getResources().getColor(R.color.textColor));
                 bind.albumsButton.performClick();
                 return false;
