@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         bind.playImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bind.playImage.setImageDrawable(getResources().getDrawable(R.drawable.button_play_purple));
                 Intent playerIntent = new Intent(MainActivity.this, PlayerActivity.class);
                 playerIntent.putExtra("clickedItem", getString(R.string.random_song));
                 playerIntent.putExtra("flag", "oneSong");
@@ -62,18 +63,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(playerIntent);
             }
         });
-        bind.playImage.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                bind.playImage.setImageDrawable(getResources().getDrawable(R.drawable.button_play_purple));
-                bind.playImage.performClick();
-                return false;
-            }
-        });
 
+        // intent with 2 Parcelable - 1st to operate in the next activity, 2nd to pass to the Player
         bind.songsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bind.songsButton.setBackground(getResources().getDrawable(R.drawable.button_background_a_purple));
+                bind.songsButton.setTextColor(getResources().getColor(R.color.textColor));
                 Intent songsIntent = new Intent(MainActivity.this, SongsActivity.class);
                 songsIntent.putParcelableArrayListExtra("songsToPick", allSongs);
                 songsIntent.putParcelableArrayListExtra("allSongs", allSongs);
@@ -81,20 +77,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        bind.songsButton.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                bind.songsButton.setBackground(getResources().getDrawable(R.drawable.button_background_a_purple));
-                bind.songsButton.setTextColor(getResources().getColor(R.color.textColor));
-                bind.songsButton.performClick();
-                return false;
-            }
-        });
-
-    // intent with 2 Parcelable - 1st to operate in the next activity, 2nd to pass to the Player
         bind.artistsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bind.artistsButton.setBackground(getResources().getDrawable(R.drawable.button_background_b_purple));
+                bind.artistsButton.setTextColor(getResources().getColor(R.color.textColor));
                 Intent artistsIntent = new Intent(MainActivity.this, ArtistsActivity.class);
                 artistsIntent.putParcelableArrayListExtra("songsToPick", allSongs);
                 artistsIntent.putParcelableArrayListExtra("allSongs", allSongs);
@@ -102,32 +89,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        bind.artistsButton.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                bind.artistsButton.setBackground(getResources().getDrawable(R.drawable.button_background_b_purple));
-                bind.artistsButton.setTextColor(getResources().getColor(R.color.textColor));
-                bind.artistsButton.performClick();
-                return false;
-            }
-        });
         bind.albumsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bind.albumsButton.setBackground(getResources().getDrawable(R.drawable.button_background_c_purple));
+                bind.albumsButton.setTextColor(getResources().getColor(R.color.textColor));
                 Intent albumsIntent = new Intent(MainActivity.this, AlbumsActivity.class);
                 albumsIntent.putParcelableArrayListExtra("songsToPick", allSongs);
                 albumsIntent.putParcelableArrayListExtra("allSongs", allSongs);
                 startActivity(albumsIntent);
-            }
-        });
-
-        bind.albumsButton.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                bind.albumsButton.setBackground(getResources().getDrawable(R.drawable.button_background_c_purple));
-                bind.albumsButton.setTextColor(getResources().getColor(R.color.textColor));
-                bind.albumsButton.performClick();
-                return false;
             }
         });
     }

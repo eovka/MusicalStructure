@@ -3,6 +3,7 @@ package pl.pisze_czytam.musicalstructure;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -16,14 +17,14 @@ public class PlayerActivity extends AppCompatActivity {
     ActivityPlayerBinding bind;
     boolean isPlaying;
     String musicPlaying;
-    int songIndex;
+    int playingSongIndex;
     ArrayList<MusicItem> allSongs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bind = DataBindingUtil.setContentView(this, R.layout.activity_player);
-        songIndex = 0;
+        playingSongIndex = 0;
 
         allSongs = getIntent().getParcelableArrayListExtra("allSongs");
 
@@ -102,7 +103,7 @@ public class PlayerActivity extends AppCompatActivity {
                 String songTitle = getIntent().getExtras().getString("clickedItem");
                 for (int i = 0; i < allSongs.size(); i++) {
                     if (songTitle.equals(allSongs.get(i).getSongTitle())) {
-                        songIndex = i;
+                        playingSongIndex = i;
                     }
                 }
                 for (int i = 0; i < allSongs.size(); i++) {
@@ -121,7 +122,7 @@ public class PlayerActivity extends AppCompatActivity {
         }
         bind.include.list.setBackground(null);
         bind.include.list.setAdapter(new MusicAdapter(this, allSongs));
-        bind.include.list.setSelection(songIndex);
+        bind.include.list.setSelection(playingSongIndex);
 
         bind.pauseImage.setOnClickListener(new View.OnClickListener() {
             @Override
