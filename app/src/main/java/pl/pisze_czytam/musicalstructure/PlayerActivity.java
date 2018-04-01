@@ -1,11 +1,13 @@
 package pl.pisze_czytam.musicalstructure;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MotionEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,9 +17,11 @@ import pl.pisze_czytam.musicalstructure.databinding.ActivityPlayerBinding;
 
 public class PlayerActivity extends AppCompatActivity {
     ActivityPlayerBinding bind;
-    boolean isPlaying;
     String musicPlaying;
     int playingSongIndex;
+    boolean isPlaying;
+    boolean isRepeated;
+    boolean isShuffled;
     ArrayList<MusicItem> allSongs;
 
     @Override
@@ -31,6 +35,8 @@ public class PlayerActivity extends AppCompatActivity {
         musicPlaying = getIntent().getExtras().getString("clickedItem");
         getSupportActionBar().setTitle(getString(R.string.music_playing, musicPlaying));
         isPlaying = true;
+        isRepeated = false;
+        isShuffled = false;
 
         // check from which activity a user came (flag), which artist, album or song he chose (clickedItem)
         // and set a list with a random song, an artist's songs, songs from one album or with all songs
@@ -121,7 +127,9 @@ public class PlayerActivity extends AppCompatActivity {
                 break;
         }
         bind.include.list.setBackground(null);
-        bind.include.list.setAdapter(new MusicAdapter(this, allSongs));
+        MusicAdapter musicAdapter = new MusicAdapter(this, allSongs);
+        bind.include.list.setAdapter(musicAdapter);
+        musicAdapter.notifyDataSetChanged();
         bind.include.list.setSelection(playingSongIndex);
 
         bind.pauseImage.setOnClickListener(new View.OnClickListener() {
@@ -141,27 +149,66 @@ public class PlayerActivity extends AppCompatActivity {
         bind.repeatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bind.repeatButton.setImageResource(R.drawable.repeat_purple);
+                if (!isRepeated) {
+                    bind.repeatButton.setImageResource(R.drawable.repeat_purple);
+                    isRepeated = true;
+                        Toast toast = Toast.makeText(getApplicationContext(), R.string.repeat_song, Toast.LENGTH_SHORT);
+                        toast.show();
+                    } else {
+                    bind.repeatButton.setImageResource(R.drawable.repeat_grey);
+                    isRepeated = false;
+                    Toast toast = Toast.makeText(getApplicationContext(), R.string.not_repeat_song, Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+
             }
         });
         bind.backwardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bind.backwardButton.setImageResource(R.drawable.backward_purple);
+                onBackPressed();
             }
         });
         bind.forwardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bind.forwardButton.setImageResource(R.drawable.forward_purple);
+                Intent mainActivity = new Intent (PlayerActivity.this, MainActivity.class);
+                startActivity(mainActivity);
             }
         });
         bind.shuffleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bind.shuffleButton.setImageResource(R.drawable.shuffle_purple);
-
-            }
+                if (isShuffled) {
+                    bind.shuffleButton.setImageResource(R.drawable.shuffle_grey);
+                    Collections.sort(allSongs, new Comparator<MusicItem>() {
+                        public int compare(MusicItem m1, MusicItem m2) {
+                            return m1.getSongTitle().compareTo(m2.getSongTitle());
+                        }
+                    });
+                    isShuffled = false;
+                    Toast toast = Toast.makeText(getApplicationContext(), R.string.songs_alphabetically, Toast.LENGTH_SHORT);
+                    toast.show();
+                } else {
+                    bind.shuffleButton.setImageResource(R.drawable.shuffle_purple);
+                    Collections.shuffle(allSongs);
+                    isShuffled = true;
+                    Toast toast = Toast.makeText(getApplicationContext(), R.string.songs_randomly, Toast.LENGTH_SHORT);
+                    toast.show();
+        }
+    }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

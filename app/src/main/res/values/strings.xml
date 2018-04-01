@@ -16,4 +16,8 @@
     <string name="backward_arrow">backward arrow</string>
     <string name="forward_arrow">forward arrow</string>
     <string name="shuffle_button">shuffle button</string>
+    <string name="repeat_song">The song will be repeated.</string>
+    <string name="not_repeat_song">You won\'t hear the same song twice.</string>
+    <string name="songs_alphabetically">Songs sorted alphabetically.</string>
+    <string name="songs_randomly">Songs will be played randomly.</string>
 </resources>

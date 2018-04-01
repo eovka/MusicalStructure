@@ -28,16 +28,15 @@
                 android:orientation="horizontal"
                 android:padding="@dimen/standard_padding">
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/backward_button"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="@dimen/small_padding"
                     android:layout_marginBottom="@dimen/small_padding"
                     android:layout_marginEnd="@dimen/bigger_padding"
                     android:contentDescription="@string/backward_arrow"
-                    android:src="@drawable/backward_grey"
-                    android:background="transparent"/>
+                    android:src="@drawable/backward_grey" />
 
                 <ImageView
                     android:id="@+id/repeat_button"
@@ -55,16 +54,15 @@
                     android:contentDescription="@string/shuffle_button"
                     android:src="@drawable/shuffle_grey" />
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/forward_button"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_marginTop="@dimen/small_padding"
                     android:layout_marginBottom="@dimen/small_padding"
                     android:layout_marginStart="@dimen/bigger_padding"
                     android:contentDescription="@string/forward_arrow"
-                    android:src="@drawable/forward_grey"
-                    android:background="transparent"/>
+                    android:src="@drawable/forward_grey"/>
             </LinearLayout>
         </LinearLayout>
 
