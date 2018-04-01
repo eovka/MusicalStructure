@@ -30,37 +30,38 @@
 
                 <ImageView
                     android:id="@+id/home_button"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="@dimen/button_size"
+                    android:layout_height="@dimen/button_size"
                     android:layout_margin="@dimen/small_padding"
                     android:contentDescription="@string/forward_arrow"
-                    android:src="@drawable/home_grey"/>
+                    android:src="@drawable/home_grey" />
+
                 <ImageView
                     android:id="@+id/backward_button"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="@dimen/small_padding"
+                    android:layout_width="@dimen/button_size"
+                    android:layout_height="@dimen/button_size"
                     android:layout_marginBottom="@dimen/small_padding"
-                    android:layout_marginLeft="@dimen/small_padding"
-                    android:layout_marginRight="@dimen/bigger_padding"
+                    android:layout_marginEnd="@dimen/bigger_padding"
+                    android:layout_marginStart="@dimen/small_padding"
+                    android:layout_marginTop="@dimen/small_padding"
                     android:contentDescription="@string/backward_arrow"
                     android:src="@drawable/backward_grey" />
 
                 <ImageView
                     android:id="@+id/repeat_button"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="@dimen/small_padding"
+                    android:layout_width="@dimen/button_size"
+                    android:layout_height="@dimen/button_size"
                     android:layout_marginBottom="@dimen/small_padding"
-                    android:layout_marginRight="@dimen/small_padding"
-                    android:layout_marginLeft="@dimen/bigger_padding"
+                    android:layout_marginEnd="@dimen/small_padding"
+                    android:layout_marginStart="@dimen/bigger_padding"
+                    android:layout_marginTop="@dimen/small_padding"
                     android:contentDescription="@string/repeat_button"
                     android:src="@drawable/repeat_grey" />
 
                 <ImageView
                     android:id="@+id/shuffle_button"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="@dimen/button_size"
+                    android:layout_height="@dimen/button_size"
                     android:layout_margin="@dimen/small_padding"
                     android:contentDescription="@string/shuffle_button"
                     android:src="@drawable/shuffle_grey" />

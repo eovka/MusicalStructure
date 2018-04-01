@@ -66,9 +66,6 @@ public class MusicItem implements Parcelable {
     public void setAlbumTitle(String albumTitle) {
         this.mAlbumTitle = albumTitle;
     }
-    public void setArtistName(String name) {
-        this.mArtistName = name;
-    }
 
     @Override
     public int describeContents() {

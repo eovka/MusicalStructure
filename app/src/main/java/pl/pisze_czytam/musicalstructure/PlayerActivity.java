@@ -82,6 +82,12 @@ public class PlayerActivity extends AppCompatActivity {
                     allSongs.get(i).setArtistId(0);
                     allSongs.get(i).setAlbumTitle("");
                 }
+
+                Collections.sort(allSongs, new Comparator<MusicItem>() {
+                    public int compare(MusicItem m1, MusicItem m2) {
+                        return m1.getSongTitle().compareTo(m2.getSongTitle());
+                    }
+                });
                 break;
             case "albums":
                 String album = getIntent().getExtras().getString("clickedItem");
@@ -132,7 +138,6 @@ public class PlayerActivity extends AppCompatActivity {
         bind.include.list.setBackground(null);
         MusicAdapter musicAdapter = new MusicAdapter(this, allSongs);
         bind.include.list.setAdapter(musicAdapter);
-        musicAdapter.notifyDataSetChanged();
         bind.include.list.setSelection(playingSongIndex);
 
         bind.pauseImage.setOnClickListener(new View.OnClickListener() {
@@ -184,26 +189,28 @@ public class PlayerActivity extends AppCompatActivity {
         bind.shuffleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkFlag.equals("oneSong")) {
-                    Toast toast = Toast.makeText(getApplicationContext(), R.string.cannot_shuffle, Toast.LENGTH_SHORT);
-                    toast.show();
-                } else {
-                    if (isShuffled) {
-                        bind.shuffleButton.setImageResource(R.drawable.shuffle_grey);
-                        Collections.sort(allSongs, new Comparator<MusicItem>() {
-                            public int compare(MusicItem m1, MusicItem m2) {
-                                return m1.getSongTitle().compareTo(m2.getSongTitle());
-                            }
-                        });
-                        isShuffled = false;
-                        Toast toast = Toast.makeText(getApplicationContext(), R.string.songs_alphabetically, Toast.LENGTH_SHORT);
+                    if (allSongs.size() == 1) {
+                        Toast toast = Toast.makeText(getApplicationContext(), R.string.cannot_shuffle, Toast.LENGTH_SHORT);
                         toast.show();
                     } else {
-                        bind.shuffleButton.setImageResource(R.drawable.shuffle_purple);
-                        Collections.shuffle(allSongs);
-                        isShuffled = true;
-                        Toast toast = Toast.makeText(getApplicationContext(), R.string.songs_randomly, Toast.LENGTH_SHORT);
-                        toast.show();
+                        if (isShuffled) {
+                            bind.shuffleButton.setImageResource(R.drawable.shuffle_grey);
+                            Collections.sort(allSongs, new Comparator<MusicItem>() {
+                                public int compare(MusicItem m1, MusicItem m2) {
+                                    return m1.getSongTitle().compareTo(m2.getSongTitle());
+                                }
+                            });
+                            isShuffled = false;
+                            Toast toast = Toast.makeText(getApplicationContext(), R.string.songs_alphabetically, Toast.LENGTH_SHORT);
+                            toast.show();
+                            bind.include.list.invalidateViews();
+                        } else {
+                            bind.shuffleButton.setImageResource(R.drawable.shuffle_purple);
+                            Collections.shuffle(allSongs);
+                            isShuffled = true;
+                            Toast toast = Toast.makeText(getApplicationContext(), R.string.songs_randomly, Toast.LENGTH_SHORT);
+                            toast.show();
+                            bind.include.list.invalidateViews();
                     }
                 }
             }

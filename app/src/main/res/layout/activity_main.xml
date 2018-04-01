@@ -25,19 +25,19 @@
             <Button
                 android:id="@+id/songs_button"
                 style="@style/buttonStyle"
-                android:background="@drawable/button_background_a"
+                android:background="@drawable/button_text_up_grey"
                 android:text="@string/songs" />
 
             <Button
                 android:id="@+id/artists_button"
                 style="@style/buttonStyle"
-                android:background="@drawable/button_background_b"
+                android:background="@drawable/button_text_middle_grey"
                 android:text="@string/artists" />
 
             <Button
                 android:id="@+id/albums_button"
                 style="@style/buttonStyle"
-                android:background="@drawable/button_background_c"
+                android:background="@drawable/button_text_down_grey"
                 android:text="@string/albums" />
         </LinearLayout>
     </ScrollView>

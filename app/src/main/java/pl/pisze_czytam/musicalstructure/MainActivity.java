@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         bind.songsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bind.songsButton.setBackground(getResources().getDrawable(R.drawable.button_background_a_purple));
+                bind.songsButton.setBackground(getResources().getDrawable(R.drawable.button_text_up_purple));
                 bind.songsButton.setTextColor(getResources().getColor(R.color.textColor));
                 Intent songsIntent = new Intent(MainActivity.this, SongsActivity.class);
                 songsIntent.putParcelableArrayListExtra("songsToPick", allSongs);
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         bind.artistsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bind.artistsButton.setBackground(getResources().getDrawable(R.drawable.button_background_b_purple));
+                bind.artistsButton.setBackground(getResources().getDrawable(R.drawable.button_text_middle_purple));
                 bind.artistsButton.setTextColor(getResources().getColor(R.color.textColor));
                 Intent artistsIntent = new Intent(MainActivity.this, ArtistsActivity.class);
                 artistsIntent.putParcelableArrayListExtra("songsToPick", allSongs);
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         bind.albumsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bind.albumsButton.setBackground(getResources().getDrawable(R.drawable.button_background_c_purple));
+                bind.albumsButton.setBackground(getResources().getDrawable(R.drawable.button_text_down_purple));
                 bind.albumsButton.setTextColor(getResources().getColor(R.color.textColor));
                 Intent albumsIntent = new Intent(MainActivity.this, AlbumsActivity.class);
                 albumsIntent.putParcelableArrayListExtra("songsToPick", allSongs);
