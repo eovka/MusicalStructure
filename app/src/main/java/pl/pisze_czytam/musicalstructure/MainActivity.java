@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         allSongs.add(new MusicItem(R.drawable.tool_10000days, R.drawable.tool_band,"Intension", "10,000 Days", "Tool"));
         allSongs.add(new MusicItem(R.drawable.tool_10000days, R.drawable.tool_band,"Right in Two", "10,000 Days", "Tool"));
         allSongs.add(new MusicItem(R.drawable.tool_10000days, R.drawable.tool_band,"Viginti Tres", "10,000 Days", "Tool"));
-        allSongs.add(new MusicItem(R.drawable.leningrad_dlya_milionov, R.drawable.leningrad_band,"Menya zovut Shnur", "Для миллионов", "Leningrad"));
+        allSongs.add(new MusicItem(R.drawable.leningrad_dlya_milionov, R.drawable.leningrad_band,"Menya zovut Shnur", "Dlya millionov", "Leningrad"));
         allSongs.add(new MusicItem(R.drawable.leningrad_dlya_milionov, R.drawable.leningrad_band,"May", "Dlya millionov", "Leningrad"));
         allSongs.add(new MusicItem(R.drawable.leningrad_dlya_milionov, R.drawable.leningrad_band,"Khuynya", "Dlya millionov", "Leningrad"));
         allSongs.add(new MusicItem(R.drawable.leningrad_dlya_milionov, R.drawable.leningrad_band,"Menedzher", "Dlya millionov", "Leningrad"));
