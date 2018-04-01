@@ -14,6 +14,7 @@ import java.util.Comparator;
 import pl.pisze_czytam.musicalstructure.databinding.MusicListBinding;
 
 public class AlbumsActivity extends AppCompatActivity {
+    static boolean ALBUMS_ACTIVE;
     MusicListBinding bind;
     ArrayList<MusicItem> allSongs;
     ArrayList<MusicItem> songsToPick;
@@ -21,6 +22,7 @@ public class AlbumsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ALBUMS_ACTIVE = true;
         bind = DataBindingUtil.setContentView(this, R.layout.music_list);
         allSongs = getIntent().getParcelableArrayListExtra("allSongs");
         songsToPick = getIntent().getParcelableArrayListExtra("songsToPick");
@@ -55,6 +57,10 @@ public class AlbumsActivity extends AppCompatActivity {
                 startActivity(playerIntent);
             }
         });
-
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        ALBUMS_ACTIVE = false;
     }
 }

@@ -1,6 +1,7 @@
 package pl.pisze_czytam.musicalstructure;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import static android.graphics.Typeface.BOLD;
+import static pl.pisze_czytam.musicalstructure.AlbumsActivity.ALBUMS_ACTIVE;
+import static pl.pisze_czytam.musicalstructure.ArtistsActivity.ARTISTS_ACTIVE;
 
 public class MusicAdapter extends ArrayAdapter<MusicItem> {
     public MusicAdapter(Activity context, ArrayList<MusicItem> musicList) {
@@ -31,6 +36,16 @@ public class MusicAdapter extends ArrayAdapter<MusicItem> {
         albumTitle.setText(currentMusicItem.getAlbumTitle());
         TextView artistName = listSongView.findViewById(R.id.artist_name_view);
         artistName.setText(currentMusicItem.getArtistName());
+
+        Typeface typeface = Typeface.create("serif-monospace", BOLD);
+        if (ARTISTS_ACTIVE) {
+            artistName.setTypeface(typeface);
+            artistName.setTextSize(20);
+        }
+        if (ALBUMS_ACTIVE) {
+            albumTitle.setTypeface(typeface);
+            albumTitle.setTextSize(18);
+        }
 
         if (songTitle.getText().equals("")) {
             songTitle.setVisibility(View.GONE);
