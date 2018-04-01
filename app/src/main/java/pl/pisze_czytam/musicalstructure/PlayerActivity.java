@@ -173,10 +173,10 @@ public class PlayerActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        bind.forwardButton.setOnClickListener(new View.OnClickListener() {
+        bind.homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bind.forwardButton.setImageResource(R.drawable.forward_purple);
+                bind.homeButton.setImageResource(R.drawable.home_purple);
                 Intent mainActivity = new Intent(PlayerActivity.this, MainActivity.class);
                 startActivity(mainActivity);
             }

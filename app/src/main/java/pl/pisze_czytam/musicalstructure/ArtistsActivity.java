@@ -62,9 +62,22 @@ public class ArtistsActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ARTISTS_ACTIVE = false;
+    }
+
     @Override
     public void onStop() {
         super.onStop();
         ARTISTS_ACTIVE = false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ARTISTS_ACTIVE = true;
     }
 }

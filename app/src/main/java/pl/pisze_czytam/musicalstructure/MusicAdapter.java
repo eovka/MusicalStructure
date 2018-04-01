@@ -53,7 +53,6 @@ public class MusicAdapter extends ArrayAdapter<MusicItem> {
         if (albumTitle.getText().equals("")) {
             albumTitle.setVisibility(View.GONE);
         }
-
         return listSongView;
     }
 }

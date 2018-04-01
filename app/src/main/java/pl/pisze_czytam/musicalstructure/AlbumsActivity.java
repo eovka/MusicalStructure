@@ -58,6 +58,13 @@ public class AlbumsActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ALBUMS_ACTIVE = false;
+    }
+
     @Override
     public void onStop() {
         super.onStop();
