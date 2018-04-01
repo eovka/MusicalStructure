@@ -20,4 +20,5 @@
     <string name="not_repeat_song">You won\'t hear the same song twice.</string>
     <string name="songs_alphabetically">Songs sorted alphabetically.</string>
     <string name="songs_randomly">Songs will be played randomly.</string>
+    <string name="cannot_shuffle">You cannot shuffle one song.</string>
 </resources>

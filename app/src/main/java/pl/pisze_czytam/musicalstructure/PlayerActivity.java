@@ -40,7 +40,7 @@ public class PlayerActivity extends AppCompatActivity {
 
         // check from which activity a user came (flag), which artist, album or song he chose (clickedItem)
         // and set a list with a random song, an artist's songs, songs from one album or with all songs
-        String checkFlag = getIntent().getStringExtra("flag");
+        final String checkFlag = getIntent().getStringExtra("flag");
         switch (checkFlag) {
             case "oneSong":
                 double randomNumber = Math.random();
@@ -184,22 +184,27 @@ public class PlayerActivity extends AppCompatActivity {
         bind.shuffleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isShuffled) {
-                    bind.shuffleButton.setImageResource(R.drawable.shuffle_grey);
-                    Collections.sort(allSongs, new Comparator<MusicItem>() {
-                        public int compare(MusicItem m1, MusicItem m2) {
-                            return m1.getSongTitle().compareTo(m2.getSongTitle());
-                        }
-                    });
-                    isShuffled = false;
-                    Toast toast = Toast.makeText(getApplicationContext(), R.string.songs_alphabetically, Toast.LENGTH_SHORT);
+                if (checkFlag.equals("oneSong")) {
+                    Toast toast = Toast.makeText(getApplicationContext(), R.string.cannot_shuffle, Toast.LENGTH_SHORT);
                     toast.show();
                 } else {
-                    bind.shuffleButton.setImageResource(R.drawable.shuffle_purple);
-                    Collections.shuffle(allSongs);
-                    isShuffled = true;
-                    Toast toast = Toast.makeText(getApplicationContext(), R.string.songs_randomly, Toast.LENGTH_SHORT);
-                    toast.show();
+                    if (isShuffled) {
+                        bind.shuffleButton.setImageResource(R.drawable.shuffle_grey);
+                        Collections.sort(allSongs, new Comparator<MusicItem>() {
+                            public int compare(MusicItem m1, MusicItem m2) {
+                                return m1.getSongTitle().compareTo(m2.getSongTitle());
+                            }
+                        });
+                        isShuffled = false;
+                        Toast toast = Toast.makeText(getApplicationContext(), R.string.songs_alphabetically, Toast.LENGTH_SHORT);
+                        toast.show();
+                    } else {
+                        bind.shuffleButton.setImageResource(R.drawable.shuffle_purple);
+                        Collections.shuffle(allSongs);
+                        isShuffled = true;
+                        Toast toast = Toast.makeText(getApplicationContext(), R.string.songs_randomly, Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
                 }
             }
         });
