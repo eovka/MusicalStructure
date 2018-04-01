@@ -117,15 +117,18 @@ public class PlayerActivity extends AppCompatActivity {
                     allSongs.get(i).setArtistId(0);
                     allSongs.get(i).setAlbumTitle("");
                 }
-                bind.include.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        musicPlaying = allSongs.get(position).getSongTitle();
-                        getSupportActionBar().setTitle(getString(R.string.music_playing, musicPlaying));
-                    }
-                });
                 break;
         }
+
+        // update the action bar with a song's title after clicking it
+        bind.include.list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                musicPlaying = allSongs.get(position).getSongTitle();
+                getSupportActionBar().setTitle(getString(R.string.music_playing, musicPlaying));
+            }
+        });
+
         bind.include.list.setBackground(null);
         MusicAdapter musicAdapter = new MusicAdapter(this, allSongs);
         bind.include.list.setAdapter(musicAdapter);
@@ -152,9 +155,9 @@ public class PlayerActivity extends AppCompatActivity {
                 if (!isRepeated) {
                     bind.repeatButton.setImageResource(R.drawable.repeat_purple);
                     isRepeated = true;
-                        Toast toast = Toast.makeText(getApplicationContext(), R.string.repeat_song, Toast.LENGTH_SHORT);
-                        toast.show();
-                    } else {
+                    Toast toast = Toast.makeText(getApplicationContext(), R.string.repeat_song, Toast.LENGTH_SHORT);
+                    toast.show();
+                } else {
                     bind.repeatButton.setImageResource(R.drawable.repeat_grey);
                     isRepeated = false;
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.not_repeat_song, Toast.LENGTH_SHORT);
@@ -174,7 +177,7 @@ public class PlayerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 bind.forwardButton.setImageResource(R.drawable.forward_purple);
-                Intent mainActivity = new Intent (PlayerActivity.this, MainActivity.class);
+                Intent mainActivity = new Intent(PlayerActivity.this, MainActivity.class);
                 startActivity(mainActivity);
             }
         });
@@ -197,8 +200,8 @@ public class PlayerActivity extends AppCompatActivity {
                     isShuffled = true;
                     Toast toast = Toast.makeText(getApplicationContext(), R.string.songs_randomly, Toast.LENGTH_SHORT);
                     toast.show();
-        }
-    }
+                }
+            }
         });
     }
 
