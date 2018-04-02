@@ -21,4 +21,13 @@
     <string name="songs_alphabetically">Songs sorted alphabetically.</string>
     <string name="songs_randomly">Songs will be played randomly.</string>
     <string name="cannot_shuffle">You cannot shuffle one song.</string>
+    <string name="tool">Tool</string>
+    <string name="ten_thousands">10,000 Days</string>
+    <string name="leningrad">Leningrad</string>
+    <string name="dlya_millionov">Dlya millionov</string>
+    <string name="piraty_xxi_veka">Piraty XXI veka</string>
+    <string name="kult">Kult</string>
+    <string name="ostateczny_krach">Ostateczny krach systemu korporacji</string>
+    <string name="rammstein">Rammstein</string>
+    <string name="herzeleid">Herzeleid</string>
 </resources>
