@@ -80,4 +80,10 @@ public class ArtistsActivity extends AppCompatActivity {
         super.onResume();
         ARTISTS_ACTIVE = true;
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        ARTISTS_ACTIVE = true;
+    }
 }

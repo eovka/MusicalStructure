@@ -70,4 +70,16 @@ public class AlbumsActivity extends AppCompatActivity {
         super.onStop();
         ALBUMS_ACTIVE = false;
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ALBUMS_ACTIVE = true;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        ALBUMS_ACTIVE = true;
+    }
 }
