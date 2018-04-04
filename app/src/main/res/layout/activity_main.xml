@@ -1,44 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_image"
+    tools:context=".MainActivity">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background_image"
-        tools:context=".MainActivity">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/play_image"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/large_margin"
+            android:contentDescription="@string/play_icon"
+            android:src="@drawable/button_play" />
 
-            <ImageView
-                android:id="@+id/play_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/large_margin"
-                android:contentDescription="@string/play_icon"
-                android:src="@drawable/button_play" />
+        <Button
+            android:id="@+id/songs_button"
+            style="@style/buttonStyle"
+            android:background="@drawable/button_text_up_grey"
+            android:text="@string/songs" />
 
-            <Button
-                android:id="@+id/songs_button"
-                style="@style/buttonStyle"
-                android:background="@drawable/button_text_up_grey"
-                android:text="@string/songs" />
+        <Button
+            android:id="@+id/artists_button"
+            style="@style/buttonStyle"
+            android:background="@drawable/button_text_middle_grey"
+            android:text="@string/artists" />
 
-            <Button
-                android:id="@+id/artists_button"
-                style="@style/buttonStyle"
-                android:background="@drawable/button_text_middle_grey"
-                android:text="@string/artists" />
-
-            <Button
-                android:id="@+id/albums_button"
-                style="@style/buttonStyle"
-                android:background="@drawable/button_text_down_grey"
-                android:text="@string/albums" />
-        </LinearLayout>
-    </ScrollView>
-</layout>
+        <Button
+            android:id="@+id/albums_button"
+            style="@style/buttonStyle"
+            android:background="@drawable/button_text_down_grey"
+            android:text="@string/albums" />
+    </LinearLayout>
+</ScrollView>

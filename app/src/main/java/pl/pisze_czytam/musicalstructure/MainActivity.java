@@ -1,23 +1,25 @@
 package pl.pisze_czytam.musicalstructure;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
-import pl.pisze_czytam.musicalstructure.databinding.ActivityMainBinding;
-
-public class MainActivity extends AppCompatActivity {
-    ActivityMainBinding bind;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     ArrayList<MusicItem> allSongs = new ArrayList<>();
+    ImageView playImage;
+    Button songsButton;
+    Button artistsButton;
+    Button albumsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bind = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
         allSongs.add(new MusicItem(R.drawable.tool_10000days, R.drawable.tool_band, getString(R.string.vicarious), getString(R.string.ten_thousands), getString(R.string.tool)));
         allSongs.add(new MusicItem(R.drawable.tool_10000days, R.drawable.tool_band, getString(R.string.jambi), getString(R.string.ten_thousands), getString(R.string.tool)));
@@ -51,53 +53,50 @@ public class MainActivity extends AppCompatActivity {
         allSongs.add(new MusicItem(R.drawable.kult_ostateczny_krach, R.drawable.kult_band, getString(R.string.komu_bije_dzwon), getString(R.string.ostateczny_krach), getString(R.string.kult)));
         allSongs.add(new MusicItem(R.drawable.rammstein_band, R.drawable.rammstein_band, getString(R.string.komu_bije_dzwon), getString(R.string.herzeleid), getString(R.string.rammstein)));
 
-        bind.playImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bind.playImage.setImageDrawable(getResources().getDrawable(R.drawable.button_play_purple));
+        playImage = findViewById(R.id.play_image);
+        songsButton = findViewById(R.id.songs_button);
+        artistsButton = findViewById(R.id.artists_button);
+        albumsButton = findViewById(R.id.albums_button);
+        playImage.setOnClickListener(this);
+        songsButton.setOnClickListener(this);
+        artistsButton.setOnClickListener(this);
+        albumsButton.setOnClickListener(this);
+    }
+
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.play_image:
+                playImage.setImageDrawable(getResources().getDrawable(R.drawable.button_play_purple));
                 Intent playerIntent = new Intent(MainActivity.this, PlayerActivity.class);
                 playerIntent.putExtra("clickedItem", getString(R.string.random_song));
                 playerIntent.putExtra("flag", "oneSong");
                 playerIntent.putParcelableArrayListExtra("allSongs", allSongs);
                 startActivity(playerIntent);
-            }
-        });
-
-        // intent with 2 Parcelable - 1st to operate in the next activity, 2nd to pass to the Player
-        bind.songsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bind.songsButton.setBackground(getResources().getDrawable(R.drawable.button_text_up_purple));
-                bind.songsButton.setTextColor(getResources().getColor(R.color.textColor));
+                break;
+            case R.id.songs_button:
+                songsButton.setBackground(getResources().getDrawable(R.drawable.button_text_up_purple));
+                songsButton.setTextColor(getResources().getColor(R.color.textColor));
                 Intent songsIntent = new Intent(MainActivity.this, SongsActivity.class);
                 songsIntent.putParcelableArrayListExtra("songsToPick", allSongs);
                 songsIntent.putParcelableArrayListExtra("allSongs", allSongs);
                 startActivity(songsIntent);
-            }
-        });
-
-        bind.artistsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bind.artistsButton.setBackground(getResources().getDrawable(R.drawable.button_text_middle_purple));
-                bind.artistsButton.setTextColor(getResources().getColor(R.color.textColor));
+                break;
+            case R.id.artists_button:
+                artistsButton.setBackground(getResources().getDrawable(R.drawable.button_text_middle_purple));
+                artistsButton.setTextColor(getResources().getColor(R.color.textColor));
                 Intent artistsIntent = new Intent(MainActivity.this, ArtistsActivity.class);
                 artistsIntent.putParcelableArrayListExtra("songsToPick", allSongs);
                 artistsIntent.putParcelableArrayListExtra("allSongs", allSongs);
                 startActivity(artistsIntent);
-            }
-        });
-
-        bind.albumsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bind.albumsButton.setBackground(getResources().getDrawable(R.drawable.button_text_down_purple));
-                bind.albumsButton.setTextColor(getResources().getColor(R.color.textColor));
+                break;
+            case R.id.albums_button:
+                albumsButton.setBackground(getResources().getDrawable(R.drawable.button_text_down_purple));
+                albumsButton.setTextColor(getResources().getColor(R.color.textColor));
                 Intent albumsIntent = new Intent(MainActivity.this, AlbumsActivity.class);
                 albumsIntent.putParcelableArrayListExtra("songsToPick", allSongs);
                 albumsIntent.putParcelableArrayListExtra("allSongs", allSongs);
                 startActivity(albumsIntent);
-            }
-        });
+                break;
+        }
     }
 }
